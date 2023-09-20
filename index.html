@@ -72,20 +72,20 @@
                     <li class="list-group-item">Search By State</li>
                     <li class="list-group-item">Search By Zip Code</li>
                 </ul>
-                <div class="card-footer">
-                    <button class="btn btn-block btn-custom bg-primary text-light" data-bs-toggle="modal"
-                        data-bs-target="#new-project-modal">
+                <div class="card-footer d-flex justify-content-center align-items-stretch">
+                    <button class="btn btn-block btn-custom card-search flex-fill bg-primary text-light"
+                        data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
                         Brewery Search
                     </button>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="new-project-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
+        <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="project-form">
+                    <form id="search-form">
                         <div class="modal-header custom-modal-header">
                             <h5 class="modal-title" id="new-project-modal-label">
                                 Search For A Brewery Near You
@@ -95,8 +95,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="project-type-input" class="form-label">Brewery Search</label>
-                                <select id="project-type-input" class="form-select">
+                                <label for="search-input" class="form-label">Brewery Search</label>
+                                <select id="format-input" class="form-select">
                                     <option value="Search By Name">
                                         Search By Name of the Brewery
                                     </option>
@@ -110,6 +110,7 @@
                                         Search By Zip Code
                                     </option>
                                 </select>
+                                <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
                             </div>
                             <div class="mb-3">
                                 <label for="project-date-input">Due Date</label>
@@ -121,7 +122,7 @@
                                 Cancel
                             </button>
                             <button type="submit" class="btn btn-custom bg-primary text-light" data-bs-dismiss="modal">
-                                Add Project
+                                Search
                             </button>
                         </div>
 

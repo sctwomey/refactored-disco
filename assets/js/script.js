@@ -1,6 +1,5 @@
 let requestUrl = 'https://api.openbrewerydb.org/v1/breweries';
-var searchButton = document.querySelector()
-var formatInputVal = document.querySelector ("#project-type-input")
+
 
 fetch(requestUrl)
     .then(function (response) {
@@ -11,9 +10,7 @@ fetch(requestUrl)
     });
 
 
-    var querystring = './search-results.html?q=' + formatInputVal + '&by_name='
-    location.assign(querystring)
-
+   
 
 
 

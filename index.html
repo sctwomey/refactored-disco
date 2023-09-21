@@ -84,6 +84,9 @@
             </div>
         </div>
         <div class="col-md">
+            <button id="city-history-button">Search Previous By City</button>
+        <button id="name-history-button">Search Previous By Name</button>
+        <button id="clear-history">Clear History</button>
         </div>
         <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
             aria-hidden="true">
@@ -99,36 +102,24 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="search-input" class="form-label">Brewery Search</label>
-                                <select id="format-input" class="form-select">
-                                    <option value="Search By Name">
-                                        Search By Name
-                                    </option>
-                                    <option value="Search By City">
-                                        Search By City
-                                    </option>
-                                    <option value="Search By State">
-                                        Search By State
-                                    </option>
-                                    <option value="Search By Country">
-                                        Search By Country
-                                    </option>
-                                </select>
-                               <!-- <input id="search-input" class="form-input w-100" type="text" placeholder="Search!"> -->
+                                <label for="brewSearchInput"></label>
+                                <input type="text" id="brewery-city" class="form-control" required. />Brewery City
                             </div>
                             <div class="mb-3">
                                 <label for="brewSearchInput"></label>
-                                <input type="text" id="brewSearchInput" class="form-control" required />
+                                <input type="text" id="brewery-name" class="form-control" required />Name
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-custom bg-primary text-light" data-bs-dismiss="modal">
-                                Find Brewery!
+                            <button class="btn btn-custom bg-primary text-light" id="brewCitySearch"> Find Brewery By City!</button>
+                            <button type="submit" class="btn btn-custom bg-primary text-light" id="brewNameSearch" data-bs-dismiss="modal">
+                                Find Brewery By Name!
                             </button>
                         </div>
+                        <card id="container0"></card>
  </card>
                         <script src="./assets/js/script.js"></script>
 

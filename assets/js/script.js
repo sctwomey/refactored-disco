@@ -31,7 +31,7 @@ searchCityBtn.addEventListener('click', function (event) {
 
     getBreweriesByCity(searchCityStoring);
 });
-
+    
 async function getBreweriesByCity(searchCityStoring) {
     var brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
 
@@ -132,7 +132,7 @@ function createList(data) {
 
     });
 
-    const container = document.getElementById('container');
+    const container = document.getElementById('container0');
     container.innerHTML = "";
     container.appendChild(ol);
 

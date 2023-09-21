@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Brewery Search Results</title>
+</head>
+
+<body>
+    <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+         <div class="col-12 col-md-3 bg-dark p-3">
+            <h1 class="text-primary">Brewery Search Results</h1>
+            <form id="search-form" class="mb-2">
+            <input id="search-input" class="form-input w-100" type="text" placeholder="Brewery Search">
+            <button class="btn btn-info btn-block">Search</button>
+        </div>
+        <div class="col-12 col-md-9 p-3 text-light">
+            <h2>Brewery Weather<span id="result-text"></span></h2>
+            <div id="result-content"></div>
+          </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,8 +1,9 @@
-<<<<<<< HEAD
-=======
 * {
     margin: 0;
     padding: 0;
 }
 
->>>>>>> 7f115e2acf9b25d9a324751e50d94738d8b2dce9
+
+.card {
+    border: 2px solid black;
+}

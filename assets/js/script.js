@@ -5,6 +5,9 @@ let searchCityHistoryButton = document.getElementById("city-history-button");
 let searchCityHistoryContainer = document.querySelector("#city-search-history");
 let searchCityHistory = [];
 
+let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
+let currentWeatherEl = document.querySelector("#current-weather");
+
 let searchNameBtn = document.getElementById("brewNameSearch");
 let brewNameInput = document.getElementById("brewery-name");
 let searchNameHistoryButton = document.getElementById("name-history-button");
@@ -25,6 +28,10 @@ searchCityBtn.addEventListener('click', function (event) {
 
     if (!searchCityStoring || undefined) {
         return;
+    }
+
+    if (searchCityStoring !== "") {
+        searchWeather(searchCityStoring);
     }
 
     localStorage.setItem("searchCity", JSON.stringify(searchCityHistory));
@@ -185,6 +192,65 @@ let namesSearched = function () {
 searchCityHistoryButton.addEventListener("click", citiesSearched);
 searchNameHistoryButton.addEventListener("click", namesSearched);
 
+// This function searches for weather data from the OpenWeather API.
+function searchWeather(brewCityInput) {
+
+    var currentWeatherApiUrl =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        brewCityInput +
+        "&appid=" +
+        weatherApiKey +
+        "&units=imperial";
+
+    // This GETs the current weather data.
+    fetch(currentWeatherApiUrl).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (data) {
+                // Display current weather data
+                displayCurrentWeather(data);
+
+            });
+        } else {
+            console.log("Error: " + response.statusText);
+        }
+    });
+};
+
+// This function displays the current weather.
+function displayCurrentWeather(data) {
+    var city = data.name;
+    var date = new Date(data.dt * 1000).toLocaleDateString();
+    var iconUrl =
+        "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    var temp = data.main.temp;
+    var humidity = data.main.humidity;
+    var windSpeed = data.wind.speed;
+
+    var html =
+        "<h1>" +
+        city +
+        " (" +
+        date +
+        ") " +
+        "<img src='" +
+        iconUrl +
+        "' alt='" +
+        data.weather[0].description +
+        "'></h1>" +
+        "<p>Temperature: " +
+        temp +
+        " &deg;F</p>" +
+        "<p>Humidity: " +
+        humidity +
+        "%</p>" +
+        "<p>Wind Speed: " +
+        windSpeed +
+        " mph</p>";
+
+    currentWeatherEl.innerHTML = html;
+    currentWeatherEl.classList.add("current-weather");
+};
 let clearSearchHistory = function () {
     localStorage.clear();
     location.reload();

@@ -248,7 +248,7 @@ function displayCurrentWeather(data) {
         windSpeed +
         " mph</p>";
 
-    currentWeatherEl.innerHTML = html;
+    currentWeatherEl.innerHTML = (html);
     currentWeatherEl.classList.add("current-weather");
 };
 let clearSearchHistory = function () {

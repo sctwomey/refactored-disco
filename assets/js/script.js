@@ -1,8 +1,8 @@
-
+// Global Variables
 let searchCityBtn = document.getElementById("brewCitySearch");
 let brewCityInput = document.getElementById("brewery-city");
 let searchCityHistoryButton = document.getElementById("city-history-button");
-let searchCityHistoryContainer = document.querySelector("#city-search-history");
+let cityHistoryContainer = document.querySelector("#city-search-history");
 let searchCityHistory = [];
 
 let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
@@ -11,16 +11,22 @@ let currentWeatherEl = document.querySelector("#current-weather");
 let searchNameBtn = document.getElementById("brewNameSearch");
 let brewNameInput = document.getElementById("brewery-name");
 let searchNameHistoryButton = document.getElementById("name-history-button");
-let searchNameHistoryContainer = document.querySelector("#name-search-history");
+let nameHistoryContainer = document.querySelector("#name-search-history");
 let searchNameHistory = [];
 
 let clearHistoryButton = document.getElementById("clear-history");
 
+
+// This saves the user input from the city search, stores it in the local storage. It also calls functions to display weather, display the list of breweries, and create search history buttons. 
 searchCityBtn.addEventListener('click', function (event) {
     event.preventDefault();
+    event.stopPropagation();
 
-    var searchCityStoring = brewCityInput.value;
-    searchCityHistory.push(searchCityStoring);
+    let searchCityStoring = toTitle(brewCityInput.value).trim();
+
+    if (!searchCityHistory.includes(searchCityStoring)) {
+        searchCityHistory.push(searchCityStoring);
+    };
 
     if (searchCityHistory.length > 10) {
         searchCityHistory.shift();
@@ -28,19 +34,20 @@ searchCityBtn.addEventListener('click', function (event) {
 
     if (!searchCityStoring || undefined) {
         return;
-    }
+    };
 
     if (searchCityStoring !== "") {
+        localStorage.setItem("searchCity", JSON.stringify(searchCityHistory));
+        citiesSearched(brewCityInput.value);
+        getBreweriesByCity(searchCityStoring);
         searchWeather(searchCityStoring);
-    }
+    };
 
-    localStorage.setItem("searchCity", JSON.stringify(searchCityHistory));
-
-    getBreweriesByCity(searchCityStoring);
 });
-    
+
+// This GETs the list of breweries by city from the API.
 async function getBreweriesByCity(searchCityStoring) {
-    var brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
+    let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
 
     try {
         const response = await fetch(
@@ -64,11 +71,16 @@ async function getBreweriesByCity(searchCityStoring) {
     };
 };
 
+// This saves the user input from the city search, stores it in the local storage. It also calls functions to display the list of breweries, remove to display weather, and create search history buttons.
 searchNameBtn.addEventListener('click', function (event) {
     event.preventDefault();
+    event.stopPropagation();
 
-    var searchNameStoring = brewNameInput.value;
-    searchNameHistory.push(searchNameStoring);
+    let searchNameStoring = toTitle(brewNameInput.value).trim();
+
+    if (!searchNameHistory.includes(searchNameStoring)) {
+        searchNameHistory.push(searchNameStoring);
+    };
 
     if (searchNameHistory.length > 10) {
         searchNameHistory.shift();
@@ -76,15 +88,20 @@ searchNameBtn.addEventListener('click', function (event) {
 
     if (!searchNameStoring || undefined) {
         return;
-    }
+    };
 
-    localStorage.setItem("searchName", JSON.stringify(searchNameHistory));
+    if (searchNameStoring !== "") {
+        localStorage.setItem("searchName", JSON.stringify(searchNameHistory));
+        namesSearched(brewNameInput.value);
+        getBreweriesByName(searchNameStoring);
+        currentWeatherEl.replaceChildren();
+    };
 
-    getBreweriesByName(searchNameStoring);
 });
 
+// This GETs the list of breweries by city from the API.
 async function getBreweriesByName(searchNameStoring) {
-    var brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
+    let brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
 
     try {
         const response = await fetch(
@@ -108,7 +125,7 @@ async function getBreweriesByName(searchNameStoring) {
     };
 };
 
-
+// This creates the list of elements to display the list of breweries on the webpage.
 function createList(data) {
 
     const ol = document.createElement('ol');
@@ -139,121 +156,114 @@ function createList(data) {
 
     });
 
-    const container = document.getElementById('container0');
+    const container = document.getElementById('container');
     container.innerHTML = "";
     container.appendChild(ol);
 
 };
 
-let citiesSearched = function () {
+// This retrieves the saved information from local storage from the cities search, and creates a button to retrieve that information.
+function citiesSearched() {
 
-    let citiesSearched = localStorage.getItem("searchCity");
+    let citiesSearched = JSON.parse(localStorage.getItem("searchCity")) || [];
 
-    if (!citiesSearched) {
-        return;
-    };
-
-    citiesSearched = JSON.parse(citiesSearched);
+    cityHistoryContainer.innerHTML = "";
 
     for (let i = 0; i < citiesSearched.length; i++) {
-        let previousCities = document.createElement("button");
-        previousCities.ClassName = "cities-searched";
-        previousCities.innerText = citiesSearched[i];
-        searchCityHistoryContainer.appendChild(previousCities);
-
-        searchCityHistory.push(citiesSearched[i]);
-
+        let buttonEl = document.createElement("button");
+        buttonEl.innerHTML = citiesSearched[i];
+        buttonEl.addEventListener('click', function (event) {
+            event.preventDefault();
+            getBreweriesByCity(event.target.innerHTML);
+            currentWeatherEl.replaceChildren();
+        });
+        cityHistoryContainer.append(buttonEl);
     };
 
 };
 
-let namesSearched = function () {
+// This retrieves the saved information from local storage from the names search, and creates a button to retrive that information.
+function namesSearched() {
 
-    let namesSearched = localStorage.getItem("searchName");
+    let namesSearched = JSON.parse(localStorage.getItem("searchName")) || [];
 
-    if (!namesSearched) {
-        return;
-    };
-
-    namesSearched = JSON.parse(namesSearched);
+    nameHistoryContainer.innerHTML = "";
 
     for (let i = 0; i < namesSearched.length; i++) {
-        let previousNames = document.createElement("button");
-        previousNames.ClassName = "names-searched";
-        previousNames.innerText = namesSearched[i];
-        searchNameHistoryContainer.appendChild(previousNames);
-
-        searchNameHistory.push(namesSearched[i]);
-
+        let buttonEl = document.createElement("button");
+        buttonEl.innerHTML = namesSearched[i];
+        buttonEl.addEventListener('click', function (event) {
+            event.preventDefault();
+            getBreweriesByName(event.target.innerHTML);
+        });
+        nameHistoryContainer.append(buttonEl);
     };
-
 };
 
-searchCityHistoryButton.addEventListener("click", citiesSearched);
-searchNameHistoryButton.addEventListener("click", namesSearched);
-
-// This function searches for weather data from the OpenWeather API.
+// This function searches for cities from the weather data from the API.
 function searchWeather(brewCityInput) {
-
-    var currentWeatherApiUrl =
+    // Current weather API URL
+    let currentWeatherApiUrl =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         brewCityInput +
         "&appid=" +
         weatherApiKey +
         "&units=imperial";
 
-    // This GETs the current weather data.
-    fetch(currentWeatherApiUrl).then(function (response) {
-        if (response.ok) {
+    // This GETs/Fetches the current weather data from the API.
+    fetch(currentWeatherApiUrl)
+        .then(function (response) {
+            if (response.ok) {
 
-            response.json().then(function (data) {
-                // Display current weather data
-                displayCurrentWeather(data);
+                response.json().then(function (data) {
+                    // This calls the display function for the current weather data.
+                    displayCurrentWeather(data);
 
-            });
-        } else {
-            console.log("Error: " + response.statusText);
-        }
-    });
+                });
+            } else {
+                console.log("Error: " + response.statusText);
+            }
+        });
 };
 
-// This function displays the current weather.
+// This function displays the current weather data.
 function displayCurrentWeather(data) {
-    var city = data.name;
-    var date = new Date(data.dt * 1000).toLocaleDateString();
-    var iconUrl =
+    let city = data.name;
+    let date = new Date(data.dt * 1000).toLocaleDateString();
+    let iconUrl =
         "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-    var temp = data.main.temp;
-    var humidity = data.main.humidity;
-    var windSpeed = data.wind.speed;
+    let temp = data.main.temp;
+    let humidity = data.main.humidity;
+    let windSpeed = data.wind.speed;
 
-    var html =
-        "<h1>" +
-        city +
-        " (" +
-        date +
-        ") " +
-        "<img src='" +
-        iconUrl +
-        "' alt='" +
-        data.weather[0].description +
-        "'></h1>" +
-        "<p>Temperature: " +
-        temp +
-        " &deg;F</p>" +
-        "<p>Humidity: " +
-        humidity +
-        "%</p>" +
-        "<p>Wind Speed: " +
-        windSpeed +
-        " mph</p>";
+    let html =
+        "<h1>" + city + " (" + date + ") " + "<img src='" +
+        iconUrl + "' alt='" + data.weather[0].description +
+        "'></h1>" + "<p>Temperature: " + temp + " &deg;F</p>" +
+        "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
+        windSpeed + " mph</p>";
 
     currentWeatherEl.innerHTML = (html);
     currentWeatherEl.classList.add("current-weather");
 };
+
+// This is a function to convert the first letters of words to an uppercase and the rest of the letters to lowercase as in titles (from code.tutsplus.com).
+function toTitle(str) {
+    let splitStr = str.toLowerCase().split(' ');
+    for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    };
+    return splitStr.join(' ');
+};
+
+// This clears the the local storage and refreshes the webpage.
 let clearSearchHistory = function () {
     localStorage.clear();
     location.reload();
 };
 
+//This calls the clear local storage function when the button "Clear History" button is clicked.
 clearHistoryButton.addEventListener("click", clearSearchHistory);
+
+citiesSearched();
+namesSearched();

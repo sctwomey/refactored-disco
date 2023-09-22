@@ -33,43 +33,85 @@
 
                     <div class="col-lg-6">
                         <div class="card mb-3">
-                            <h1 class="text-primary">Brewery Search Results</h1>
+                            <h1 class="text-black">Brewery Search Results</h1>
                             <form id="search-form" class="mb-2">
                                 <input id="search-input" class="form-input w-100" type="text"
-                                    placeholder="Brewery Search">
+                                    placeholder=" Brewery Search">
                                 <div class="card-footer d-flex justify-content-center align-items-stretch">
 
-                                    <button class="btn btn-block btn-custom card-search flex-fill bg-success text-light"
+                                    <button class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
                                         data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
                                         Brewery Search
                                     </button>
                                 </div>
                         </div>
                     </div>
-                </card>
-            </div>
-        </div>
-    </card>
-    <div class="col-md" style="position: relative; left: 60px;">
-        <button class="button-design-two"id="city-history-button">Search Previous By City</button>
-    <button class="button-design-two"id="name-history-button">Search Previous By Name</button>
-    <button class="button-design-two"id="clear-history">Clear History</button>
-    </div>
-    <card class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="row">
-                <card class="container text-center">
-                    <div class="col-lg-6">
-                        <div class="card mb-3">
-                            <h1 class="text-primary">Brewery Weather</h1>
-                            <div id="result-content"></div>
-                        </div>
+                    <div class="col-md" style="margin-left: -720px;">
+                        <button class="button-design-two"id="city-history-button">Search Previous By City</button>
+                    <button class="button-design-two"id="name-history-button">Search Previous By Name</button>
+                    <button class="button-design-two"id="clear-history">Clear History</button>
                     </div>
-
+                    <card class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="row">
+                                <card class="container text-center">
+                                    <div class="col-lg-6">
+                                        <div class="card mb-3">
+                                            <h1 class="text-">Brewery Weather</h1>
+                                            <div id="result-content"></div>
+                                        </div>
+                                    </div>
+                
+                                </card>
+                            </div>
+                        </div>
+                    </card>
+                    <!--MODAL-->
+                    <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="search-form">
+                                <div class="modal-header custom-modal-header">
+                                    <h5 class="modal-title" id="new-project-modal-label">
+                                        Search For A Brewery Near You
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="brewSearchInput"></label>
+                                        <input type="text" id="brewery-city" class="form-control" required. />Brewery City
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="brewSearchInput"></label>
+                                        <input type="text" id="brewery-name" class="form-control" required />Brewery Name
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+        
+                                    <button type="button" class="btn btn-danger button-design" data-bs-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <button class="btn btn-custom bg-primary text-light button-design" id="brewCitySearch"> Find Brewery By City!</button>
+                                    <button type="submit" class="btn btn-custom bg-primary text-light button-design" id="brewNameSearch" data-bs-dismiss="modal">
+                                        Find Brewery By Name!
+        
+        
+                            
+        
+                                    </button>
+                                </div>
+                                <card id="container0"></card>
+                
+                
+                
                 </card>
             </div>
         </div>
     </card>
+ 
 
     <script src="./assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

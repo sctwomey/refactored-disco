@@ -1,3 +1,4 @@
+// Global Variables
 let searchCityBtn = document.getElementById("brewCitySearch");
 let brewCityInput = document.getElementById("brewery-city");
 let searchCityHistoryButton = document.getElementById("city-history-button");
@@ -35,6 +36,9 @@ searchCityBtn.addEventListener('click', function (event) {
         return;
     };
 
+    var queryString = './search-results2.html?q=' + searchCityStoring;
+    location.assign(queryString);
+
     if (searchCityStoring !== "") {
         localStorage.setItem("searchCity", JSON.stringify(searchCityHistory));
         citiesSearched(brewCityInput.value);
@@ -42,33 +46,35 @@ searchCityBtn.addEventListener('click', function (event) {
         searchWeather(searchCityStoring);
     };
 
+
+
 });
 
-// This GETs the list of breweries by city from the API.
-async function getBreweriesByCity(searchCityStoring) {
-    let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
+// // This GETs the list of breweries by city from the API.
+// async function getBreweriesByCity(searchCityStoring) {
+//     let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
 
-    try {
-        const response = await fetch(
-            brewCityUrl,
-            {
-                method: 'GET',
-            },
-        );
+//     try {
+//         const response = await fetch(
+//             brewCityUrl,
+//             {
+//                 method: 'GET',
+//             },
+//         );
 
-        if (!response.ok) {
-            throw new Error(`Error! status: ${response.status}`);
-        };
+//         if (!response.ok) {
+//             throw new Error(`Error! status: ${response.status}`);
+//         };
 
-        const data = await response.json();
-        createList(data);
+//         const data = await response.json();
+//         createList(data);
 
-        return data;
+//         return data;
 
-    } catch (error) {
-        console.log(error);
-    };
-};
+//     } catch (error) {
+//         console.log(error);
+//     };
+// };
 
 // This saves the user input from the city search, stores it in the local storage. It also calls functions to display the list of breweries, remove to display weather, and create search history buttons.
 searchNameBtn.addEventListener('click', function (event) {
@@ -89,6 +95,9 @@ searchNameBtn.addEventListener('click', function (event) {
         return;
     };
 
+    var queryString = './search-results2.html?q=' + searchNameStoring;
+    location.assign(queryString);
+
     if (searchNameStoring !== "") {
         localStorage.setItem("searchName", JSON.stringify(searchNameHistory));
         namesSearched(brewNameInput.value);
@@ -98,31 +107,31 @@ searchNameBtn.addEventListener('click', function (event) {
 
 });
 
-// This GETs the list of breweries by city from the API.
-async function getBreweriesByName(searchNameStoring) {
-    let brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
+// // This GETs the list of breweries by city from the API.
+// async function getBreweriesByName(searchNameStoring) {
+//     let brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
 
-    try {
-        const response = await fetch(
-            brewNameUrl,
-            {
-                method: 'GET',
-            },
-        );
+//     try {
+//         const response = await fetch(
+//             brewNameUrl,
+//             {
+//                 method: 'GET',
+//             },
+//         );
 
-        if (!response.ok) {
-            throw new Error(`Error! status: ${response.status}`);
-        };
+//         if (!response.ok) {
+//             throw new Error(`Error! status: ${response.status}`);
+//         };
 
-        const data = await response.json();
-        createList(data);
+//         const data = await response.json();
+//         createList(data);
 
-        return data;
+//         return data;
 
-    } catch (error) {
-        console.log(error);
-    };
-};
+//     } catch (error) {
+//         console.log(error);
+//     };
+// };
 
 // // This creates the list of elements to display the list of breweries on the webpage.
 // function createList(data) {

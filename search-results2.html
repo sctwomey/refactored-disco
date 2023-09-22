@@ -26,97 +26,46 @@
     </nav>
 
 
-    <card class="container-fluid">
+    <section class="container-fluid">
         <div class="row justify-content-center">
             <div class="row">
-                <card class="container text-center">
+                <div class="container text-center">
 
-                    <div class="col-lg-6">
+                    <article class="col-lg-6">
                         <div class="card mb-3">
-                            <h1 class="text-black">Brewery Search Results</h1>
-                            <form id="search-form" class="mb-2">
-                                <input id="search-input" class="form-input w-100" type="text"
-                                    placeholder=" Brewery Search">
-                                <div class="card-footer d-flex justify-content-center align-items-stretch">
-
-                                    <button
-                                        class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
-                                        data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
-                                        Brewery Search
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <button class="button-design-two" id="clear-history">Clear History</button>
-
-                    </div>
-
-                    <card class="container-fluid">
-                        <div class="row justify-content-center">
-                            <div class="row">
-                                <card class="container text-center">
-                                    <div class="col-lg-6">
-                                        <div class="card mb-3">
-                                            <h1 class="text-">Brewery Weather</h1>
-                                            <div id="result-content"></div>
-                                        </div>
-                                    </div>
-
-                                </card>
+                            <h1 class="text-black">Brewery Search History</h1>
+                            <div id="city-search-history"></div>
+                            <div id="name-search-history"></div>
+                            <div id="search-form" class="mb-2">
+                                <button
+                                    class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
+                                    data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
+                                    Go Back
+                                </button>
+                                <button class="button-design-two" id="clear-history">Clear History</button>
                             </div>
                         </div>
-                    </card>
-                    <!--MODAL-->
-                    <div class="modal fade" id="brewery-search-modal" tabindex="-1"
-                        aria-labelledby="new-project-modal-label" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form id="search-form">
-                                    <div class="modal-header custom-modal-header">
-                                        <h5 class="modal-title" id="new-project-modal-label">
-                                            Search For A Brewery Near You
-                                        </h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                    </article>
+                </div>
+
+                <article class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="row">
+                            <section class="container text-center">
+                                <div class="col-lg-6">
+                                    <div class="card mb-3">
+                                        <h1 class="text-">Brewery Weather</h1>
+                                        <div id="result-content"></div>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="brewSearchInput"></label>
-                                            <input type="text" id="brewery-city" class="form-control"
-                                                required. />Brewery City
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="brewSearchInput"></label>
-                                            <input type="text" id="brewery-name" class="form-control" required />Brewery
-                                            Name
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
+                                </div>
+                            </section>
+                            <div id="results-container"></div>
+                        </div>
+                    </div>
+                </article>
 
-                                        <button type="button" class="btn btn-danger button-design"
-                                            data-bs-dismiss="modal">
-                                            Cancel
-                                        </button>
-                                        <button class="btn btn-custom bg-primary text-light button-design"
-                                            id="brewCitySearch"> Find Brewery By City!</button>
-                                        <button type="submit" class="btn btn-custom bg-primary text-light button-design"
-                                            id="brewNameSearch" data-bs-dismiss="modal">
-                                            Find Brewery By Name!
-
-
-
-
-                                        </button>
-                                    </div>
-                                    <card id="container0"></card>
-
-
-
-                </card>
             </div>
-        </div>
-    </card>
+    </section>
 
 
     <script src="./assets/js/results-script.js"></script>

@@ -16,6 +16,80 @@ let searchNameHistory = [];
 
 let clearHistoryButton = document.getElementById("clear-history");
 
+
+function getCityParams() {
+    // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+    var searchCityParams = document.location.search.split('&');
+
+
+    // Get the query and format values
+    var city = searchCityParams[0].split('=').pop();
+
+    getBreweriesByCity(city);
+};
+
+// This GETs the list of breweries by city from the API.
+async function getBreweriesByCity(searchCityStoring) {
+    let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
+
+    try {
+        const response = await fetch(
+            brewCityUrl,
+            {
+                method: 'GET',
+            },
+        );
+
+        if (!response.ok) {
+            throw new Error(`Error! status: ${response.status}`);
+        };
+
+        const data = await response.json();
+        createList(data);
+
+        return data;
+
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+function getNameParams() {
+    // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+    var searchNameParams = document.location.search.split('&');
+
+    // Get the query and format values
+    var query = searchNameParams[0].split('=').pop();
+
+    getBreweriesByName(query);
+};
+
+// This GETs the list of breweries by city from the API.
+async function getBreweriesByName(searchNameStoring) {
+    let brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
+
+    try {
+        const response = await fetch(
+            brewNameUrl,
+            {
+                method: 'GET',
+            },
+        );
+
+        if (!response.ok) {
+            throw new Error(`Error! status: ${response.status}`);
+        };
+
+        const data = await response.json();
+        createList(data);
+
+        return data;
+
+    } catch (error) {
+        console.log(error);
+    };
+};
+
 // This creates the list of elements to display the list of breweries on the webpage.
 function createList(data) {
 
@@ -47,7 +121,7 @@ function createList(data) {
 
     });
 
-    const container = document.getElementById('container');
+    const container = document.getElementById('results-container');
     container.innerHTML = "";
     container.appendChild(ol);
 
@@ -158,3 +232,5 @@ clearHistoryButton.addEventListener("click", clearSearchHistory);
 
 citiesSearched();
 namesSearched();
+getCityParams();
+getNameParams();

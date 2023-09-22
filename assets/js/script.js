@@ -161,43 +161,43 @@ async function getBreweriesByName(searchNameStoring) {
 
 // };
 
-// This retrieves the saved information from local storage from the cities search, and creates a button to retrieve that information.
-function citiesSearched() {
+// // This retrieves the saved information from local storage from the cities search, and creates a button to retrieve that information.
+// function citiesSearched() {
 
-    let citiesSearched = JSON.parse(localStorage.getItem("searchCity")) || [];
+//     let citiesSearched = JSON.parse(localStorage.getItem("searchCity")) || [];
 
-    cityHistoryContainer.innerHTML = "";
+//     cityHistoryContainer.innerHTML = "";
 
-    for (let i = 0; i < citiesSearched.length; i++) {
-        let buttonEl = document.createElement("button");
-        buttonEl.innerHTML = citiesSearched[i];
-        buttonEl.addEventListener('click', function (event) {
-            event.preventDefault();
-            getBreweriesByCity(event.target.innerHTML);
-            currentWeatherEl.replaceChildren();
-        });
-        cityHistoryContainer.append(buttonEl);
-    };
+//     for (let i = 0; i < citiesSearched.length; i++) {
+//         let buttonEl = document.createElement("button");
+//         buttonEl.innerHTML = citiesSearched[i];
+//         buttonEl.addEventListener('click', function (event) {
+//             event.preventDefault();
+//             getBreweriesByCity(event.target.innerHTML);
+//             currentWeatherEl.replaceChildren();
+//         });
+//         cityHistoryContainer.append(buttonEl);
+//     };
 
-};
+// };
 
-// This retrieves the saved information from local storage from the names search, and creates a button to retrive that information.
-function namesSearched() {
+// // This retrieves the saved information from local storage from the names search, and creates a button to retrive that information.
+// function namesSearched() {
 
-    let namesSearched = JSON.parse(localStorage.getItem("searchName")) || [];
+//     let namesSearched = JSON.parse(localStorage.getItem("searchName")) || [];
 
-    nameHistoryContainer.innerHTML = "";
+//     nameHistoryContainer.innerHTML = "";
 
-    for (let i = 0; i < namesSearched.length; i++) {
-        let buttonEl = document.createElement("button");
-        buttonEl.innerHTML = namesSearched[i];
-        buttonEl.addEventListener('click', function (event) {
-            event.preventDefault();
-            getBreweriesByName(event.target.innerHTML);
-        });
-        nameHistoryContainer.append(buttonEl);
-    };
-};
+//     for (let i = 0; i < namesSearched.length; i++) {
+//         let buttonEl = document.createElement("button");
+//         buttonEl.innerHTML = namesSearched[i];
+//         buttonEl.addEventListener('click', function (event) {
+//             event.preventDefault();
+//             getBreweriesByName(event.target.innerHTML);
+//         });
+//         nameHistoryContainer.append(buttonEl);
+//     };
+// };
 
 // This function searches for cities from the weather data from the API.
 function searchWeather(brewCityInput) {

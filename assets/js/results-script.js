@@ -52,3 +52,109 @@ function createList(data) {
     container.appendChild(ol);
 
 };
+
+// This retrieves the saved information from local storage from the cities search, and creates a button to retrieve that information.
+function citiesSearched() {
+
+    let citiesSearched = JSON.parse(localStorage.getItem("searchCity")) || [];
+
+    cityHistoryContainer.innerHTML = "";
+
+    for (let i = 0; i < citiesSearched.length; i++) {
+        let buttonEl = document.createElement("button");
+        buttonEl.innerHTML = citiesSearched[i];
+        buttonEl.addEventListener('click', function (event) {
+            event.preventDefault();
+            getBreweriesByCity(event.target.innerHTML);
+            currentWeatherEl.replaceChildren();
+        });
+        cityHistoryContainer.append(buttonEl);
+    };
+
+};
+
+// This retrieves the saved information from local storage from the names search, and creates a button to retrive that information.
+function namesSearched() {
+
+    let namesSearched = JSON.parse(localStorage.getItem("searchName")) || [];
+
+    nameHistoryContainer.innerHTML = "";
+
+    for (let i = 0; i < namesSearched.length; i++) {
+        let buttonEl = document.createElement("button");
+        buttonEl.innerHTML = namesSearched[i];
+        buttonEl.addEventListener('click', function (event) {
+            event.preventDefault();
+            getBreweriesByName(event.target.innerHTML);
+        });
+        nameHistoryContainer.append(buttonEl);
+    };
+};
+
+// This function searches for cities from the weather data from the API.
+function searchWeather(brewCityInput) {
+    // Current weather API URL
+    let currentWeatherApiUrl =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        brewCityInput +
+        "&appid=" +
+        weatherApiKey +
+        "&units=imperial";
+
+    // This GETs/Fetches the current weather data from the API.
+    fetch(currentWeatherApiUrl)
+        .then(function (response) {
+            if (response.ok) {
+
+                response.json().then(function (data) {
+                    // This calls the display function for the current weather data.
+                    displayCurrentWeather(data);
+
+                });
+            } else {
+                console.log("Error: " + response.statusText);
+            }
+        });
+};
+
+// This function displays the current weather data.
+function displayCurrentWeather(data) {
+    let city = data.name;
+    let date = new Date(data.dt * 1000).toLocaleDateString();
+    let iconUrl =
+        "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    let temp = data.main.temp;
+    let humidity = data.main.humidity;
+    let windSpeed = data.wind.speed;
+
+    let html =
+        "<h1>" + city + " (" + date + ") " + "<img src='" +
+        iconUrl + "' alt='" + data.weather[0].description +
+        "'></h1>" + "<p>Temperature: " + temp + " &deg;F</p>" +
+        "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
+        windSpeed + " mph</p>";
+
+    currentWeatherEl.innerHTML = (html);
+    currentWeatherEl.classList.add("current-weather");
+};
+
+// This is a function to convert the first letters of words to an uppercase and the rest of the letters to lowercase as in titles (from code.tutsplus.com).
+function toTitle(str) {
+    let splitStr = str.toLowerCase().split(' ');
+    for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    };
+    return splitStr.join(' ');
+};
+
+// This clears the the local storage and refreshes the webpage.
+let clearSearchHistory = function () {
+    localStorage.clear();
+    location.reload();
+};
+
+//This calls the clear local storage function when the button "Clear History" button is clicked.
+clearHistoryButton.addEventListener("click", clearSearchHistory);
+
+citiesSearched();
+namesSearched();

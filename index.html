@@ -9,152 +9,142 @@
     <title>Brew Buddy</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Brew Buddies</title>
-    <style class="background-image">
-        body {
-            background-image: url(images/shutterstock_1586721964.jpg);
-            background-size: cover;
-            background-attachment: fixed;
-        }
-    </style>
 </head>
 
 
-<body>
+<style class="background-image">
+    body {
+        background-image: url(images/shutterstock_1586721964.jpg);
+        background-size:cover;
+        background-attachment: fixed;
+    }
+</style>
+
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-black">
             <div class="container-fluid">
-                <a class="navbar-brand text-light" href="#">
-                    <h2>BrewBuddy</h2>
-                </a>
+                <a class="navbar-brand text-light" href="#"><h2>BrewBuddy</h2></a>
 
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled text-light" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" id="formEl" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search </button>
-                </form>
-            </div> -->
+               <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled text-light" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" id="formEl" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search </button>
+                    </form>
+                </div> -->
             </div>
         </nav>
     </header>
-    <card class="container text-center">
-        <div class="row">
-            <!--Temp placeholder to align card in middle (looking for solution)-->
-            <div class="col-md">
-            </div>
-            <div class="col-md">
-                <p></p>
-            </div>
-            <div class="col-md col-xl-4">
-                <div class="card mb-3">
-                    <h2 class="h4 card-header custom-card-header">Search For Breweries</h2>
-                    <div class="card-body">
-                        <p class="card-text">
+ <card class="container text-center">
+    <div class="row">
+        <!--Temp placeholder to align card in middle (looking for solution)-->
+        <div class="col-md">
+        </div>
+        <div class="col-md">
+            <p></p>
+        </div>
+        <div class="col-md col-xl-4">
+            <div class="card mb-3">
+                <h2 class="h4 card-header custom-card-header">Search For Breweries</h2>
+                <div class="card-body">
+                    <p class="card-text">
 
-                            Click the button to find a brewery through the options listed below:
+                        Click the button to find a brewery through the options listed below:
 
-                        </p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Search By Name</li>
-                        <li class="list-group-item">Search By City</li>
-
-                    </ul>
-                    <div class="card-footer d-flex justify-content-center align-items-stretch">
-
-                        <button
-                            class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
-                            data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
-                            Brewery Search
-                        </button>
-                    </div>
+                    </p>
                 </div>
-            </div>
-            <!--Temp placeholder to align card in middle (looking for solution)-->
-            <div class="col-md">
-            </div>
-            <div class="col-md">
-                <p></p>
-            </div>
-            <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form id="search-form">
-                            <div class="modal-header custom-modal-header">
-                                <h5 class="modal-title" id="new-project-modal-label">
-                                    Search For A Brewery Near You
-                                </h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="brewSearchInput"></label>
-                                    <input type="text" id="brewery-city" class="form-control" required.="">Brewery City
-                                </div>
-                                <div class="mb-3">
-                                    <label for="brewSearchInput"></label>
-                                    <input type="text" id="brewery-name" class="form-control" required="">Brewery Name
-                                </div>
-                            </div>
-                            <div class="modal-footer">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Search By Name</li>
+                    <li class="list-group-item">Search By City</li>
+                  
+                </ul>
+                <div class="card-footer d-flex justify-content-center align-items-stretch">
 
-                                <button type="button" class="btn btn-danger button-design" data-bs-dismiss="modal">
-                                    Cancel
-                                </button>
-                                <button class="btn btn-custom bg-primary text-light button-design" id="brewCitySearch">
-                                    Find Brewery By City!</button>
-                                <button type="submit" class="btn btn-custom bg-primary text-light button-design"
-                                    id="brewNameSearch" data-bs-dismiss="modal">
-                                    Find Brewery By Name!
+                    <button class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
 
-
-
-
-                                </button>
-                            </div>
-                            <card id="container0"></card>
-
-                            <script src="./assets/js/script.js"></script>
-
-                            <script
-                                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-                        </form>
-                    </div>
+                        data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
+                        Brewery Search
+                    </button>
                 </div>
             </div>
         </div>
-    </card>
+                <!--Temp placeholder to align card in middle (looking for solution)-->
+        <div class="col-md">
+        </div>
+        <div class="col-md">
+            <p></p>
+        </div>
+        <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="search-form">
+                        <div class="modal-header custom-modal-header">
+                            <h5 class="modal-title" id="new-project-modal-label">
+                                Search For A Brewery Near You
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="brewSearchInput"></label>
+                                <input type="text" id="brewery-city" class="form-control" required. />Brewery City
+                            </div>
+                            <div class="mb-3">
+                                <label for="brewSearchInput"></label>
+                                <input type="text" id="brewery-name" class="form-control" required />Brewery Name
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-danger button-design" data-bs-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button class="btn btn-custom bg-primary text-light button-design" id="brewCitySearch"> Find Brewery By City!</button>
+                            <button type="submit" class="btn btn-custom bg-primary text-light button-design" id="brewNameSearch" data-bs-dismiss="modal">
+                                Find Brewery By Name!
+
+
+                    
+
+                            </button>
+                        </div>
+                        <card id="container0"></card>
+ </card>
+                        <script src="./assets/js/script.js"></script>
+
+                        <script
+                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+          </html>

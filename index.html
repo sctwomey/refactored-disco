@@ -66,10 +66,13 @@
     </header>
  <card class="container text-center">
     <div class="row">
+        <!--Temp placeholder to align card in middle (looking for solution)-->
         <div class="col-md">
         </div>
+        <div class="col-md">
+            <p></p>
+        </div>
         <div class="col-md col-xl-4">
-            <!-- Add project form and instructions -->
             <div class="card mb-3">
                 <h2 class="h4 card-header custom-card-header">Search For Breweries</h2>
                 <div class="card-body">
@@ -82,14 +85,11 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Search By Name</li>
                     <li class="list-group-item">Search By City</li>
-                    <li class="list-group-item">Search By State</li>
-
-                    <li class="list-group-item">Search By Country</li>
                   
                 </ul>
                 <div class="card-footer d-flex justify-content-center align-items-stretch">
 
-                    <button class="btn btn-block btn-custom card-search flex-fill bg-success text-light"
+                    <button class="btn brewery-button btn-block btn-custom card-search flex-fill bg-success text-light"
 
                         data-bs-toggle="modal" data-bs-target="#brewery-search-modal">
                         Brewery Search
@@ -97,10 +97,11 @@
                 </div>
             </div>
         </div>
+                <!--Temp placeholder to align card in middle (looking for solution)-->
         <div class="col-md">
-            <button id="city-history-button">Search Previous By City</button>
-        <button id="name-history-button">Search Previous By Name</button>
-        <button id="clear-history">Clear History</button>
+        </div>
+        <div class="col-md">
+            <p></p>
         </div>
         <div class="modal fade" id="brewery-search-modal" tabindex="-1" aria-labelledby="new-project-modal-label"
             aria-hidden="true">
@@ -121,16 +122,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="brewSearchInput"></label>
-                                <input type="text" id="brewery-name" class="form-control" required />Name
+                                <input type="text" id="brewery-name" class="form-control" required />Brewery Name
                             </div>
                         </div>
                         <div class="modal-footer">
 
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-danger button-design" data-bs-dismiss="modal">
                                 Cancel
                             </button>
-                            <button class="btn btn-custom bg-primary text-light" id="brewCitySearch"> Find Brewery By City!</button>
-                            <button type="submit" class="btn btn-custom bg-primary text-light" id="brewNameSearch" data-bs-dismiss="modal">
+                            <button class="btn btn-custom bg-primary text-light button-design" id="brewCitySearch"> Find Brewery By City!</button>
+                            <button type="submit" class="btn btn-custom bg-primary text-light button-design" id="brewNameSearch" data-bs-dismiss="modal">
                                 Find Brewery By Name!
 
 

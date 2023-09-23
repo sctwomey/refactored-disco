@@ -118,12 +118,16 @@ function createList(data) {
         li.appendChild(ul);
 
         ol.appendChild(li);
-
     });
 
     const container = document.getElementById('results-container');
     container.innerHTML = "";
     container.appendChild(ol);
+    //Temp code to move search results to the right
+    container.style.position = "absolute"
+    container.style.right = "-850px"
+    container.style.top = "90px"
+
 
 };
 

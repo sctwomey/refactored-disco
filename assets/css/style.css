@@ -48,11 +48,9 @@
     color: #174ea6;
 }
 
-.container {
+#results-container {
+    color: black;
+    /*Try to figure out how to style the search resutls from here. Styling properties not working, coded in JS file for now*/
 
 }
 
-#results-button {
-    border-radius: 10px;
-    color: blue
-}

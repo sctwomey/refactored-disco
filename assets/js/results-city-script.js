@@ -8,6 +8,8 @@ let searchCityHistory = [];
 let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
 let currentWeatherEl = document.querySelector("#current-weather");
 
+let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
 let clearHistoryButton = document.getElementById("clear-history");
 
 
@@ -15,14 +17,8 @@ function getCityParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
     var searchCityParams = document.location.search.split('?by_city=');
 
-
-    console.log("City Params: ", searchCityParams);
-
     // Get the city values
     var city = searchCityParams[1].split('=').pop();
-
-
-    console.log("city: ", city);
 
     getBreweriesByCity(city);
 
@@ -37,9 +33,6 @@ async function getBreweriesByCity(searchCityStoring) {
         searchCityStoring +
         "&appid=" +
         weatherApiKey + "&units=imperial";
-
-    console.log("Url: ", brewCityUrl);
-    console.log("Url: ", currentWeatherApiUrl);
 
     fetch(currentWeatherApiUrl)
         .then(function (response) {
@@ -75,7 +68,6 @@ async function getBreweriesByCity(searchCityStoring) {
     } catch (error) {
         console.log(error);
     };
-
 
 };
 
@@ -114,7 +106,7 @@ function createList(data) {
     container.appendChild(ol);
     //Temp code to move search results to the right
     container.style.position = "absolute"
-    container.style.right = "-850px"
+    container.style.right = "-1150px"
     container.style.top = "90px"
 
 
@@ -134,7 +126,7 @@ function citiesSearched() {
         buttonEl.addEventListener('click', function (event) {
             event.preventDefault();
             getBreweriesByCity(event.target.innerHTML);
-            // currentWeatherEl.replaceChildren();
+            currentWeatherEl.replaceChildren();
         });
         cityHistoryContainer.append(buttonEl);
     };
@@ -144,7 +136,7 @@ function citiesSearched() {
 // This function displays the current weather data.
 function displayCurrentWeather(data) {
     let city = data.name;
-    let date = new Date(data.dt * 1000).toLocaleDateString();
+    let date = new Date(data.dt * 1000).toLocaleDateString('en-US', options);
     let iconUrl =
         "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
     let temp = data.main.temp;
@@ -152,7 +144,7 @@ function displayCurrentWeather(data) {
     let windSpeed = data.wind.speed;
 
     let html =
-        "<h1>" + city + " (" + date + ") " + "<img src='" +
+        "<h1>" + city + "<br> <h4>(" + date + ")</h4> " + "<img src='" +
         iconUrl + "' alt='" + data.weather[0].description +
         "'></h1>" + "<p>Temperature: " + temp + " &deg;F</p>" +
         "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +

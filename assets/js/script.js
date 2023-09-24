@@ -47,6 +47,7 @@ searchCityBtn.addEventListener('click', function (event) {
         searchWeather(searchCityStoring);
     };
 
+
 });
 
 // This saves the user input from the city search, stores it in the local storage. It also calls functions to display the list of breweries, remove to display weather, and create search history buttons.
@@ -98,7 +99,7 @@ function searchWeather(brewCityInput) {
                 response.json().then(function (data) {
                     // This calls the display function for the current weather data.
                     displayCurrentWeather(data);
-
+                    console.log(displayCurrentWeather());
                 });
             } else {
                 console.log("Error: " + response.statusText);

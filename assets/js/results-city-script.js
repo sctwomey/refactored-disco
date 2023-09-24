@@ -88,10 +88,10 @@ function createList(data) {
     const container = document.getElementById('results-container');
     container.innerHTML = "";
     container.appendChild(ol);
-    //Temp code to move search results to the right
-    container.style.position = "absolute"
-    container.style.right = "-850px"
-    container.style.top = "90px"
+    // //Temp code to move search results to the right
+    // container.style.position = "absolute"
+    // container.style.right = "-850px"
+    // container.style.top = "90px"
 
 
 };
@@ -109,7 +109,7 @@ function citiesSearched() {
         buttonEl.addEventListener('click', function (event) {
             event.preventDefault();
             getBreweriesByCity(event.target.innerHTML);
-            currentWeatherEl.replaceChildren();
+            // currentWeatherEl.replaceChildren();
         });
         cityHistoryContainer.append(buttonEl);
     };
@@ -124,22 +124,21 @@ function searchWeather(brewCityInput) {
         brewCityInput +
         "&appid=" +
         weatherApiKey +
-        "&units=imperial";
 
-    // This GETs/Fetches the current weather data from the API.
-    fetch(currentWeatherApiUrl)
-        .then(function (response) {
-            if (response.ok) {
+        // This GETs/Fetches the current weather data from the API.
+        fetch(currentWeatherApiUrl)
+            .then(function (response) {
+                if (response.ok) {
 
-                response.json().then(function (data) {
-                    // This calls the display function for the current weather data.
-                    displayCurrentWeather(data);
+                    response.json().then(function (data) {
+                        // This calls the display function for the current weather data.
+                        displayCurrentWeather(data);
 
-                });
-            } else {
-                console.log("Error: " + response.statusText);
-            }
-        });
+                    });
+                } else {
+                    console.log("Error: " + response.statusText);
+                }
+            });
 };
 
 // This function displays the current weather data.
@@ -159,7 +158,7 @@ function displayCurrentWeather(data) {
         "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
         windSpeed + " mph</p>";
 
-    currentWeatherEl.innerHTML = (html);
+    currentWeatherEl.innerHTML = html;
     currentWeatherEl.classList.add("current-weather");
 };
 

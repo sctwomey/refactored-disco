@@ -41,7 +41,7 @@ async function getBreweriesByCity(searchCityStoring) {
                 response.json().then(function (data) {
                     // This calls the display function for the current weather data.
                     displayCurrentWeather(data);
-                    console.log("DisplayWeather: ", displayCurrentWeather);
+
                 });
             } else {
                 console.log("Error: " + response.status);

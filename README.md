@@ -2,11 +2,11 @@
 
 ## Table of contents
 
-* [Description][#Description]
-* [Technologies][#Technologies]
-* [Picture Refs][#Picture Refs]
-* [Authors][#Authors]
-* [License][#License]
+* [Description](#Description)
+* [Technologies](#Technologies)
+* [Picture Refs](#Picture-Refs)
+* [Authors](#Authors)
+* [License](#License)
 
 ## Links
 Deployed link: https://sctwomey.github.io/refactored-disco

@@ -14,10 +14,10 @@ let clearHistoryButton = document.getElementById("clear-history");
 
 
 function getCityParams() {
-    // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+    // Get the search params out of the URL.
     var searchCityParams = document.location.search.split('?by_city=');
 
-    // Get the city values
+    // Get the city values.
     var city = searchCityParams[1].split('=').pop();
 
     getBreweriesByCity(city);
@@ -28,11 +28,8 @@ function getCityParams() {
 async function getBreweriesByCity(searchCityStoring) {
     let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
 
-    let currentWeatherApiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-        searchCityStoring +
-        "&appid=" +
-        weatherApiKey + "&units=imperial";
+    let currentWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" +
+        searchCityStoring + "&appid=" + weatherApiKey + "&units=imperial";
 
     fetch(currentWeatherApiUrl)
         .then(function (response) {
@@ -132,17 +129,16 @@ function citiesSearched() {
 function displayCurrentWeather(data) {
     let city = data.name;
     let date = new Date(data.dt * 1000).toLocaleDateString('en-US', options);
-    let iconUrl =
-        "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+
+    let iconUrl = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+
     let temp = data.main.temp;
     let humidity = data.main.humidity;
     let windSpeed = data.wind.speed;
 
-    let html =
-        "<h2>" + city + "</h2>" + "<h3>(" + date + ")</h3> " + "<img src='" +
-        iconUrl + "' alt='" + data.weather[0].description +
-        "'>" + "<p>Temperature: " + temp + " &deg;F</p>" +
-        "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
+    let html = "<h2>" + city + "</h2>" + "<h3>(" + date + ")</h3>" + "<img src='" +
+        iconUrl + "' alt='" + iconUrl + "'>" + "<p>Temperature: " + temp +
+        " &deg;F</p>" + "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
         windSpeed + " mph</p>";
 
     currentWeatherEl.innerHTML = html;

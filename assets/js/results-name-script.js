@@ -1,7 +1,4 @@
 // Global Variables
-let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
-let currentWeatherEl = document.querySelector("#current-weather");
-
 let searchNameBtn = document.getElementById("brewNameSearch");
 let brewNameInput = document.getElementById("brewery-name");
 let searchNameHistoryButton = document.getElementById("name-history-button");
@@ -12,10 +9,10 @@ let clearHistoryButton = document.getElementById("clear-history");
 
 
 function getNameParams() {
-    // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+    // Get the search params out of the URL.
     var searchNameParams = document.location.search.split('?by_name=');
 
-    // Get the query and format values
+    // Get the query and format values.
     var name = searchNameParams[1].split('=').pop();
 
     getBreweriesByName(name);
@@ -103,27 +100,6 @@ function namesSearched() {
         });
         nameHistoryContainer.append(buttonEl);
     };
-};
-
-// This function displays the current weather data.
-function displayCurrentWeather(data) {
-    let city = data.name;
-    let date = new Date(data.dt * 1000).toLocaleDateString();
-    let iconUrl =
-        "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-    let temp = data.main.temp;
-    let humidity = data.main.humidity;
-    let windSpeed = data.wind.speed;
-
-    let html =
-        "<h1>" + city + " (" + date + ") " + "<img src='" +
-        iconUrl + "' alt='" + data.weather[0].description +
-        "'></h1>" + "<p>Temperature: " + temp + " &deg;F</p>" +
-        "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
-        windSpeed + " mph</p>";
-
-    currentWeatherEl.innerHTML = (html);
-    currentWeatherEl.classList.add("current-weather");
 };
 
 // This is a function to convert the first letters of words to an uppercase and the rest of the letters to lowercase as in titles (from code.tutsplus.com).

@@ -9,8 +9,8 @@
 * [License](#License)
 
 ## Links
-Deployed link: https://sctwomey.github.io/refactored-disco
-Public Github repo: https://github.com/sctwomey/refactored-disco
+* Deployed link: https://sctwomey.github.io/refactored-disco
+* Public Github repo: https://github.com/sctwomey/refactored-disco
 ## Description
 
 This project was built for the purpose of providing a user to find breweries in a certain location or name and get the weather to help plan a trip to a brewery.

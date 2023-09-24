@@ -8,7 +8,12 @@ let searchCityHistory = [];
 let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
 let currentWeatherEl = document.querySelector("#current-weather");
 
-let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+let options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+};
 
 let clearHistoryButton = document.getElementById("clear-history");
 

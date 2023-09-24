@@ -8,7 +8,8 @@
     border-radius: 10px
 }
 
-.brewery-button {
+.brewery-button,
+.go-back-button {
     border-radius: 100px
 }
 
@@ -21,7 +22,7 @@
     font-size: 16px;
 }
 
-.button-design-two {
+/* .button-design-two {
     align-items: center;
     background-color: #fff;
     border-radius: 24px;
@@ -41,16 +42,15 @@
     padding: 2px 24px;
     position: relative;
     text-align: center;
-}
+} */
 
-.button-design-two:hover {
+/* .button-design-two:hover {
     background: #F6F9FE;
     color: #174ea6;
-}
+} */
 
 #results-container {
     color: black;
     /*Try to figure out how to style the search resutls from here. Styling properties not working, coded in JS file for now*/
 
 }
-

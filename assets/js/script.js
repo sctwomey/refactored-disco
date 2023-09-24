@@ -47,7 +47,6 @@ searchCityBtn.addEventListener('click', function (event) {
         searchWeather(searchCityStoring);
     };
 
-
 });
 
 // This saves the user input from the city search, stores it in the local storage. It also calls functions to display the list of breweries, remove to display weather, and create search history buttons.

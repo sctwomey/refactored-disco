@@ -25,6 +25,7 @@ function getCityParams() {
     console.log("city: ", city);
 
     getBreweriesByCity(city);
+
 };
 
 // This GETs the list of breweries by city from the API.

@@ -99,6 +99,7 @@ function namesSearched() {
 
     for (let i = 0; i < namesSearched.length; i++) {
         let buttonEl = document.createElement("button");
+        buttonEl.setAttribute("class", "btn btn-secondary m-1");
         buttonEl.innerHTML = namesSearched[i];
         buttonEl.addEventListener('click', function (event) {
             event.preventDefault();

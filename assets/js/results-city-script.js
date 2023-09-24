@@ -105,6 +105,7 @@ function citiesSearched() {
 
     for (let i = 0; i < citiesSearched.length; i++) {
         let buttonEl = document.createElement("button");
+        buttonEl.setAttribute("class", "btn btn-secondary m-1");
         buttonEl.innerHTML = citiesSearched[i];
         buttonEl.addEventListener('click', function (event) {
             event.preventDefault();

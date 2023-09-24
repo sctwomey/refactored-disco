@@ -1,10 +1,4 @@
 // Global Variables
-let searchCityBtn = document.getElementById("brewCitySearch");
-let brewCityInput = document.getElementById("brewery-city");
-let searchCityHistoryButton = document.getElementById("city-history-button");
-let cityHistoryContainer = document.querySelector("#city-search-history");
-let searchCityHistory = [];
-
 let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
 let currentWeatherEl = document.querySelector("#current-weather");
 

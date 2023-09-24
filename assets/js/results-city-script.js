@@ -8,12 +8,6 @@ let searchCityHistory = [];
 let weatherApiKey = '45cbba5c85dfa674bf1c6440aa5d1deb';
 let currentWeatherEl = document.querySelector("#current-weather");
 
-let searchNameBtn = document.getElementById("brewNameSearch");
-let brewNameInput = document.getElementById("brewery-name");
-let searchNameHistoryButton = document.getElementById("name-history-button");
-let nameHistoryContainer = document.querySelector("#name-search-history");
-let searchNameHistory = [];
-
 let clearHistoryButton = document.getElementById("clear-history");
 
 

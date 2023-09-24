@@ -9,6 +9,10 @@
     background-color: rgb(219, 219, 219);
 }
 
+h1 {
+    border-bottom: 2px solid black;
+}
+
 .brewery-button,
 .go-back-button {
     border-radius: 100px
@@ -42,4 +46,5 @@
 #current-weather {
     text-align: center;
     font-weight: bold;
+    margin: 5px;
 }

@@ -104,11 +104,6 @@ function createList(data) {
     const container = document.getElementById('results-container');
     container.innerHTML = "";
     container.appendChild(ol);
-    //Temp code to move search results to the right
-    container.style.position = "absolute"
-    container.style.right = "-1150px"
-    container.style.top = "90px"
-
 
 };
 

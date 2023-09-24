@@ -15,12 +15,8 @@ function getNameParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
     var searchNameParams = document.location.search.split('?by_name=');
 
-    console.log("NameParams: ", searchNameParams);
-
     // Get the query and format values
     var name = searchNameParams[1].split('=').pop();
-
-    console.log("Name: ", name);
 
     getBreweriesByName(name);
 };

@@ -47,3 +47,10 @@
     background: #F6F9FE;
     color: #174ea6;
 }
+
+#results-container {
+    color: black;
+    /*Try to figure out how to style the search resutls from here. Styling properties not working, coded in JS file for now*/
+
+}
+

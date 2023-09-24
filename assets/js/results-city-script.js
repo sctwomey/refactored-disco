@@ -32,7 +32,28 @@ function getCityParams() {
 async function getBreweriesByCity(searchCityStoring) {
     let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
 
+    let currentWeatherApiUrl =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        searchCityStoring +
+        "&appid=" +
+        weatherApiKey + "&units=imperial";
+
     console.log("Url: ", brewCityUrl);
+    console.log("Url: ", currentWeatherApiUrl);
+
+    fetch(currentWeatherApiUrl)
+        .then(function (response) {
+            if (response.ok) {
+
+                response.json().then(function (data) {
+                    // This calls the display function for the current weather data.
+                    displayCurrentWeather(data);
+                    console.log("DisplayWeather: ", displayCurrentWeather);
+                });
+            } else {
+                console.log("Error: " + response.status);
+            }
+        });
 
     try {
         const response = await fetch(
@@ -54,6 +75,8 @@ async function getBreweriesByCity(searchCityStoring) {
     } catch (error) {
         console.log(error);
     };
+
+
 };
 
 // This creates the list of elements to display the list of breweries on the webpage.
@@ -89,10 +112,10 @@ function createList(data) {
     const container = document.getElementById('results-container');
     container.innerHTML = "";
     container.appendChild(ol);
-    // //Temp code to move search results to the right
-    // container.style.position = "absolute"
-    // container.style.right = "-850px"
-    // container.style.top = "90px"
+    //Temp code to move search results to the right
+    container.style.position = "absolute"
+    container.style.right = "-850px"
+    container.style.top = "90px"
 
 
 };
@@ -116,31 +139,6 @@ function citiesSearched() {
         cityHistoryContainer.append(buttonEl);
     };
 
-};
-
-// This function searches for cities from the weather data from the API.
-function searchWeather(brewCityInput) {
-    // Current weather API URL
-    let currentWeatherApiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-        brewCityInput +
-        "&appid=" +
-        weatherApiKey +
-
-        // This GETs/Fetches the current weather data from the API.
-        fetch(currentWeatherApiUrl)
-            .then(function (response) {
-                if (response.ok) {
-
-                    response.json().then(function (data) {
-                        // This calls the display function for the current weather data.
-                        displayCurrentWeather(data);
-
-                    });
-                } else {
-                    console.log("Error: " + response.statusText);
-                }
-            });
 };
 
 // This function displays the current weather data.

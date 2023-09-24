@@ -17,56 +17,25 @@ let searchNameHistory = [];
 let clearHistoryButton = document.getElementById("clear-history");
 
 
-function getCityParams() {
-    // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-    var searchCityParams = document.location.search.split('&');
-
-
-    // Get the query and format values
-    var city = searchCityParams[0].split('=').pop();
-
-    getBreweriesByCity(city);
-};
-
-// This GETs the list of breweries by city from the API.
-async function getBreweriesByCity(searchCityStoring) {
-    let brewCityUrl = 'https://api.openbrewerydb.org/v1/breweries?by_city=' + searchCityStoring;
-
-    try {
-        const response = await fetch(
-            brewCityUrl,
-            {
-                method: 'GET',
-            },
-        );
-
-        if (!response.ok) {
-            throw new Error(`Error! status: ${response.status}`);
-        };
-
-        const data = await response.json();
-        createList(data);
-
-        return data;
-
-    } catch (error) {
-        console.log(error);
-    };
-};
-
 function getNameParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-    var searchNameParams = document.location.search.split('&');
+    var searchNameParams = document.location.search.split('?by_name=');
+
+    console.log("NameParams: ", searchNameParams);
 
     // Get the query and format values
-    var query = searchNameParams[0].split('=').pop();
+    var name = searchNameParams[1].split('=').pop();
 
-    getBreweriesByName(query);
+    console.log("Name: ", name);
+
+    getBreweriesByName(name);
 };
 
 // This GETs the list of breweries by city from the API.
 async function getBreweriesByName(searchNameStoring) {
     let brewNameUrl = 'https://api.openbrewerydb.org/v1/breweries?by_name=' + searchNameStoring;
+
+    console.log("Name Url: ", brewNameUrl);
 
     try {
         const response = await fetch(
@@ -127,26 +96,6 @@ function createList(data) {
 
 };
 
-// This retrieves the saved information from local storage from the cities search, and creates a button to retrieve that information.
-function citiesSearched() {
-
-    let citiesSearched = JSON.parse(localStorage.getItem("searchCity")) || [];
-
-    cityHistoryContainer.innerHTML = "";
-
-    for (let i = 0; i < citiesSearched.length; i++) {
-        let buttonEl = document.createElement("button");
-        buttonEl.innerHTML = citiesSearched[i];
-        buttonEl.addEventListener('click', function (event) {
-            event.preventDefault();
-            getBreweriesByCity(event.target.innerHTML);
-            currentWeatherEl.replaceChildren();
-        });
-        cityHistoryContainer.append(buttonEl);
-    };
-
-};
-
 // This retrieves the saved information from local storage from the names search, and creates a button to retrive that information.
 function namesSearched() {
 
@@ -163,32 +112,6 @@ function namesSearched() {
         });
         nameHistoryContainer.append(buttonEl);
     };
-};
-
-// This function searches for cities from the weather data from the API.
-function searchWeather(brewCityInput) {
-    // Current weather API URL
-    let currentWeatherApiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-        brewCityInput +
-        "&appid=" +
-        weatherApiKey +
-        "&units=imperial";
-
-    // This GETs/Fetches the current weather data from the API.
-    fetch(currentWeatherApiUrl)
-        .then(function (response) {
-            if (response.ok) {
-
-                response.json().then(function (data) {
-                    // This calls the display function for the current weather data.
-                    displayCurrentWeather(data);
-
-                });
-            } else {
-                console.log("Error: " + response.statusText);
-            }
-        });
 };
 
 // This function displays the current weather data.
@@ -230,7 +153,5 @@ let clearSearchHistory = function () {
 //This calls the clear local storage function when the button "Clear History" button is clicked.
 clearHistoryButton.addEventListener("click", clearSearchHistory);
 
-citiesSearched();
 namesSearched();
-getCityParams();
 getNameParams();

@@ -38,3 +38,7 @@
     list-style: none;
     text-align: center;
 }
+
+#current-weather {
+    text-align: center;
+}

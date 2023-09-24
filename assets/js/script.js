@@ -117,7 +117,7 @@ function displayCurrentWeather(data) {
     let windSpeed = data.wind.speed;
 
     let html =
-        "<h2>" + city + "</h2>" + "<h3> (" + date + ") </h3>" + "<img src='" +
+        "<h2>" + city + "</h2>" + "<h3>(" + date + ")</h3>" + "<img src='" +
         iconUrl + "' alt='" + data.weather[0].description +
         "'>" + "<p>Temperature: " + temp + " &deg;F</p>" +
         "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +

@@ -21,10 +21,6 @@ searchCityBtn.addEventListener('click', function (event) {
     searchCityHistory = JSON.parse(localStorage.getItem("searchCity")) || [];
     searchCityHistory.push(searchCityStoring);
 
-    if (searchCityHistory.length > 5) {
-        searchCityHistory.shift();
-    };
-
     if (!searchCityStoring || undefined) {
         return;
     };
@@ -32,10 +28,21 @@ searchCityBtn.addEventListener('click', function (event) {
     var queryString = './search-results-city.html?by_city=' + searchCityStoring;
     location.assign(queryString);
 
-    console.log(queryString);
+    if (searchCityHistory.length > 5) {
+        searchCityHistory.shift();
+    };
+
+    let checkForCopies = [];
 
     if (searchCityStoring !== "") {
-        localStorage.setItem("searchCity", JSON.stringify(searchCityHistory));
+        searchCityHistory.forEach(function (searchCityStoring) {
+            if (!checkForCopies.includes(searchCityStoring)) {
+                checkForCopies.push(searchCityStoring);
+            }
+        });
+
+        localStorage.setItem("searchCity", JSON.stringify(checkForCopies)
+        );
     };
 
 });
@@ -50,10 +57,6 @@ searchNameBtn.addEventListener('click', function (event) {
     searchNameHistory = JSON.parse(localStorage.getItem("searchName")) || [];
     searchNameHistory.push(searchNameStoring);
 
-    if (searchNameHistory.length > 5) {
-        searchNameHistory.shift();
-    };
-
     if (!searchNameStoring || undefined) {
         return;
     };
@@ -61,8 +64,21 @@ searchNameBtn.addEventListener('click', function (event) {
     var queryString = './search-results-name.html?by_name=' + searchNameStoring;
     location.assign(queryString);
 
+    if (searchNameHistory.length > 5) {
+        searchNameHistory.shift();
+    };
+
+    let checkForCopies = [];
+
     if (searchNameStoring !== "") {
-        localStorage.setItem("searchName", JSON.stringify(searchNameHistory));
+        searchNameHistory.forEach(function (searchNameStoring) {
+            if (!checkForCopies.includes(searchNameStoring)) {
+                checkForCopies.push(searchNameStoring);
+            }
+        });
+
+        localStorage.setItem("searchName", JSON.stringify(checkForCopies)
+        );
     };
 
 });

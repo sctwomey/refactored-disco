@@ -38,7 +38,7 @@ searchCityBtn.addEventListener('click', function (event) {
         searchCityHistory.forEach(function (searchCityStoring) {
             if (!checkForCopies.includes(searchCityStoring)) {
                 checkForCopies.push(searchCityStoring);
-            }
+            };
         });
 
         localStorage.setItem("searchCity", JSON.stringify(checkForCopies)

@@ -132,19 +132,19 @@ function citiesSearched() {
 
 // This function displays the current weather data.
 function displayCurrentWeather(data) {
-    let city = data.name;
-    let date = new Date(data.dt * 1000).toLocaleDateString('en-US', options);
+    let cityData = data.name;
+    let cityDate = new Date(data.dt * 1000).toLocaleDateString('en-US', options);
 
     let iconUrl = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
 
-    let temp = data.main.temp;
-    let humidity = data.main.humidity;
-    let windSpeed = data.wind.speed;
+    let cityTemp = data.main.temp;
+    let cityHumidity = data.main.humidity;
+    let cityWindSpeed = data.wind.speed;
 
-    let html = "<h2>" + city + "</h2>" + "<h3>(" + date + ")</h3>" + "<img src='" +
-        iconUrl + "' alt='" + iconUrl + "'>" + "<p>Temperature: " + temp +
-        " &deg;F</p>" + "<p>Humidity: " + humidity + "%</p>" + "<p>Wind Speed: " +
-        windSpeed + " mph</p>";
+    let html = "<h2>" + cityData + "</h2>" + "<h3>(" + cityDate + ")</h3>" + "<img src='" +
+        iconUrl + "' alt='" + iconUrl + "'>" + "<p>Temperature: " + cityTemp +
+        " &deg;F</p>" + "<p>Humidity: " + cityHumidity + "%</p>" + "<p>Wind Speed: " +
+        cityWindSpeed + " mph</p>";
 
     currentWeatherEl.innerHTML = html;
     currentWeatherEl.classList.add("current-weather");

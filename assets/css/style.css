@@ -48,3 +48,22 @@ h1 {
     font-weight: bold;
     margin: 5px;
 }
+
+@media screen and (max-width: 200px) {
+
+    .btn,
+    a {
+        width: 50%;
+        height: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #results-container {
+        max-width: 100px;
+    }
+
+    #results-container ol li {
+        text-align: left;
+    }
+}
